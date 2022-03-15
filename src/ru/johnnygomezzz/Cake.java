@@ -1,7 +1,5 @@
 package ru.johnnygomezzz;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.util.Scanner;
 
 public class Cake {
@@ -12,33 +10,29 @@ public class Cake {
 
         n = scanner.nextInt();
 
-        totalResult();
+        System.out.println(totalResult());
     }
 
     public static int resultFor(int sum) {
         int cutCount = 0;
 
         while (sum >= 2) {
+
+            if (sum % 2 == 1) {
+                cutCount++;
+            }
             sum = sum / 2;
+
             cutCount++;
         }
         return cutCount;
     }
 
-    public static void totalResult() {
+    public static int totalResult() {
 
         if (n <= 1) {
-            System.out.println(0);
+            return 0;
         }
-        if (n == 2) {
-            System.out.println(1);
-        }
-        if (n > 2 && n % 2 == 0) {
-            System.out.println(1 + resultFor(n));
-        }
-        if (n > 2 && n % 2 == 1) {
-            System.out.println(1 + resultFor(n - 1));
-        }
-
+        return resultFor(n);
     }
 }
